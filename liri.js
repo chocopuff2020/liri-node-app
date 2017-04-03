@@ -74,14 +74,14 @@ function spotify() {
 
           results.forEach(function(i) {
               songNumber++;
-              console.log(" =====================================");
-              console.log(" Matched song #" + songNumber+ " found");
+              console.log(" ============= MATCHED song #"+ songNumber+ " ================");
+              // console.log(" Matched song #" + songNumber+ " found");
               console.log("Type : " + i.type);
               console.log("Artist Name : " + i.album.artists[0].name);
               console.log("Popularity: " + i.popularity);
               console.log("Listen here: " + i.external_urls.spotify);
               console.log("Available markets: " + i.album.available_markets);
-              console.log(" =====================================");
+              console.log(" =============================================");
 
           });
       });

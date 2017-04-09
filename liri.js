@@ -30,16 +30,7 @@ function tweet(tweets) {
       var tweets = [];
 
       var client = new Twitter(twitterKeys.twitterKeys);
-      console.log(twitterKeys.twitterKeys);
-
-
-      // var client = new Twitter({
-      //   consumer_key: '5aD0beC7ImObwzOY5lTwwJUJK',
-      //   consumer_secret: 'xFN4tIkV6bYLgA56491UY2TacsKCE2v1B98VCWDnlpXvdVxwi9',
-      //   access_token_key: '847566219167191040-mb8addRzxKThVMHgae71mZ3w5HTtig4',
-      //   access_token_secret: 'CgrPSrTQ0EcxbzxvBJZ2xu3MG7ir3qMOPJSsBRWnZLF2f'
-      // });
-
+    
       var params = {screen_name: 'mia_greens'};
       client.get('statuses/user_timeline', params, function(error, tweets, response) {
         if (!error) {
@@ -76,7 +67,6 @@ function spotify(songInput) {
               console.log("Listen here: " + i.external_urls.spotify);
               console.log("Available markets: " + i.album.available_markets);
               console.log(" =============================================");
-
           });
       });
 };

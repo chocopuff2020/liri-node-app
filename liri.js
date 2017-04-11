@@ -1,3 +1,8 @@
+var twitterKeys = require('./keys.js');
+var Twitter = require('twitter');
+var spotify = require('spotify');
+var request = require('request');
+var fs = require('fs');
 
 var argv = process.argv;
 var myCommand = process.argv[2];
@@ -46,8 +51,7 @@ function tweet(tweets) {
 }
 
 function spotify(songInput) {
-      var spotify = require('spotify');
-      songInput = myInput;
+      songInput = myInput || "The Sign by Ace of Base";
 
       spotify.search({ type: 'track', query:songInput}, function(err, data) {
           if ( err ) {
@@ -72,8 +76,8 @@ function spotify(songInput) {
 };
 
 function movie(movie) {
-        var request = require('request');
-        movie = myInput;
+        movie = myInput || "Mr. Nobody";
+    
         request("http://www.omdbapi.com/?t="+ movie+ "&y=&plot=short&r=json", function(error, response, body) {
           if (!error && response.statusCode === 200) {
             var obj = JSON.parse(body);
@@ -96,7 +100,6 @@ function movie(movie) {
 
 
 function doIt () {
-    var fs = require('fs');
     fs.readFile("random.txt", "utf8", function(err,data) {
         data = data.split(",");
         var commandLiri = data[0];

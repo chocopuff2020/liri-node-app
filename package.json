@@ -4,6 +4,7 @@
   "description": "Create a liri app that can search for movies, songs and show recent tweets using 3 different npm packages",
   "main": "keys.js",
   "dependencies": {
+    "dotenv": "^4.0.0",
     "request": "^2.81.0",
     "spotify": "^0.3.0",
     "twitter": "^1.7.0"

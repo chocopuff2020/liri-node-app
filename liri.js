@@ -1,10 +1,10 @@
-var twitterKeys = require('./keys.js');
-var Twitter = require('twitter');
-var spotify = require('spotify');
 var request = require('request');
 var fs = require('fs');
 
 var argv = process.argv;
+
+var twitterKeys = require('./keys.js');
+var Twitter = require('twitter');
 var myCommand = process.argv[2];
 var myInput = "";
 
@@ -14,7 +14,7 @@ for (var i=3; i< argv.length; i++) {
 
 switch (myCommand) {
   case "my-tweets":
-      tweet();
+      twitter();
       break;
   case "spotify-this-song":
       spotify(myInput);
@@ -27,22 +27,17 @@ switch (myCommand) {
       break;
 }
 
-
-function tweet(tweets) {
-      var twitterKeys = require('./keys.js');
-      var Twitter = require('twitter');
+function twitter() {
       var tweetsNumber = 0;
-      var tweets = [];
-
       var client = new Twitter(twitterKeys.twitterKeys);
-    
+
       var params = {screen_name: 'mia_greens'};
       client.get('statuses/user_timeline', params, function(error, tweets, response) {
         if (!error) {
           tweets.forEach(function(i) {
               tweetsNumber++;
               console.log('========== TWEET # '+tweetsNumber + '==========');
-              console.log(i.text);
+              console.log(`Tweet # ${tweetsNumber}: ` + i.text);
               console.log('Created at: '+ tweets[0].user.created_at);
               console.log("Re-tweet count: "+ tweets[0].retweet_count);
             })
@@ -50,7 +45,10 @@ function tweet(tweets) {
       });
 }
 
+
+
 function spotify(songInput) {
+      var spotify = require('spotify');
       songInput = myInput || "The Sign by Ace of Base";
 
       spotify.search({ type: 'track', query:songInput}, function(err, data) {

@@ -1,10 +1,9 @@
 var request = require('request');
 var fs = require('fs');
-
-var argv = process.argv;
-
 var twitterKeys = require('./keys.js');
 var Twitter = require('twitter');
+
+var argv = process.argv;
 var myCommand = process.argv[2];
 var myInput = "";
 
